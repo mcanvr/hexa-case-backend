@@ -10,10 +10,5 @@ export const createLogoSchema = yup.object({
       .string()
       .required('Logo style is required')
       .typeError('Logo style must be a string'),
-    image_url: yup
-      .string()
-      .url('Image URL must be a valid URL')
-      .required('Image URL is required')
-      .typeError('Image URL must be a string'),
   }),
 });

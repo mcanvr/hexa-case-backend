@@ -26,7 +26,12 @@ export const createLogoController = async (
   req: Request,
   res: Response,
 ): Promise<void> => {
-  const logoData = req.body as CreateLogoData;
-  const newLogo = await logoService.createLogo(logoData);
-  res.status(201).json(newLogo);
+  try {
+    const logoData = req.body as CreateLogoData;
+    const newLogo = await logoService.createLogo(logoData);
+    res.status(201).json(newLogo);
+  } catch (error) {
+    console.error('Error creating logo:', error);
+    res.status(500).json({ error: 'Failed to create logo' });
+  }
 };
